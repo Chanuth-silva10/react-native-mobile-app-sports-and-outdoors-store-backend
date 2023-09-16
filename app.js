@@ -14,6 +14,17 @@ app.use(express.json())
 dotenv.config();
 
 const multer  = require('multer')
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads/')
+  },
+  filename: function (req, file, cb) {
+    let uploadFile = file.originalname.split('.')
+    let name = `${uploadFile[0]}-${Date.now()}.${uploadFile[uploadFile.length-1]}`
+    cb(null, name)
+  }
+})
+const upload = multer({ storage: storage })
 
 const { register, login, updateUser, deleteUser, userById, resetPassword } = require("./controllers/auth/auth");
 const { addProduct, updateProduct, deleteProduct, getAllProducts } = require("./controllers/products/products")
@@ -36,6 +47,23 @@ app.post("/product", [isAdmin], addProduct)
 app.get("/products", getAllProducts)
 app.post("/update-product", [isAdmin], updateProduct)
 app.get("/delete-product", [isAdmin], deleteProduct)
+
+app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {  
+
+  try{
+    let files = req.files;
+    if(!files.length){
+      return res.status(400).json({ err:'Please upload an image', msg:'Please upload an image' })
+    }
+    let file = req.files[0]
+    if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+        return res.json({"image" : file.filename}) 
+    }
+  }
+  catch(error){
+    return res.send(error.message)
+  }
+})
 
 app.listen((process.env.PORT || 8081), () => {
   console.log(`Example app listening on port ${process.env.PORT}!`)
