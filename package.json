@@ -1,10 +1,10 @@
 {
-  "name": "backend",
+  "name": "react-native-backend",
   "version": "1.0.0",
-  "description": "ecommerce app backend",
-  "main": "index.js",
+  "description": "sports and outdoor store app backend",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "chanuth maduka",
   "license": "ISC"
