@@ -2,7 +2,7 @@ const express = require('express')
 const app = express();
 const port = process.env.PORT;
 var bodyParser = require('body-parser');
-const dotenv = require('dotenv');
+require("dotenv").config();
 const jwt = require('jsonwebtoken');
 var path = require('path');
 var cors = require('cors')
@@ -13,9 +13,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json())
-
-// Set up Global configuration access
-dotenv.config();
 
 // MULTER
 const multer  = require('multer')
@@ -40,8 +37,7 @@ const { getAllOrders, changeStatusOfOrder } = require('./controllers/admin/order
 const { orders } = require('./controllers/user/orders');
 const { addCategory, getCategories, updateCategory, deleteCategory } = require('./controllers/categories/category');
 const { addToWishlist, wishlist, removeFromWishlist } = require('./controllers/user/wishlist');
-const mongoose = require("./config/database")()
-
+const connectDatabase = require("./config/database.js")()
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
