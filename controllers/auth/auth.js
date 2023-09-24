@@ -22,6 +22,7 @@ module.exports.login = async (req, res) => {
       });
     }
 
+    // bcrypting the password and comparing with the one in db
     if (await bcrypt.compare(password, user.password)) {
 
       const token = generateAuthToken({_id : user?._id, email : email})
@@ -50,6 +51,7 @@ module.exports.register = async (req, res) => {
   try {
     const { email, password, name, userType } = req.body;
     console.log(req.body)
+    // if any one of the field from email and password is not filled
     if (!email || !password) {
       return res.json({
         success: false,
@@ -144,7 +146,9 @@ module.exports.resetPassword = async (req, res) => {
     
         if(!user) return res.send("user does not exist")
     
+        // comparing the password from the password in DB to allow changes
         if(bcrypt.compare(password, user?.password)){
+            // encrypting new password 
             user.password = await bcrypt.hash(newPassword,10)
             user.save()
             return res.json({
