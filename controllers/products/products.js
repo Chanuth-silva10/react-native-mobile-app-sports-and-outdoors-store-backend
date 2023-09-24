@@ -47,6 +47,7 @@ module.exports.updateProduct = async (req, res) => {
         const {title, sku, price, image} = req.body;
         const {id} = req.query;
 
+        // check if product exist with the given product id
         const product = await productModel.findOne({_id : id})
 
         if(product){
@@ -78,6 +79,7 @@ module.exports.deleteProduct = async (req, res) => {
 
         const {id} = req.query;
         
+        // check if product exist with the given product id
         const product = await productModel.findOneAndDelete({_id : id})
         if(!product){
             return res.json({
@@ -98,6 +100,7 @@ module.exports.deleteProduct = async (req, res) => {
 module.exports.getAllProducts = async (req, res) => {
     try{
 
+        // Search through title names
         var {search} = req.query
         if(!search) search = ""
 
