@@ -4,7 +4,7 @@
   "description": "sports and outdoor store app backend",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "author": "chanuth maduka",
   "license": "ISC",
