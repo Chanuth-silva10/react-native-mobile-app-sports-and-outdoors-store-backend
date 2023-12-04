@@ -13,9 +13,4 @@ const userSchema = mongoose.Schema({
 
 },{timestamps: true})
 
-
-// userSchema.methods.generateAuthToken = function () {
-//     this.token = jwt.sign({ userID: this._id, email: this.email }, TOKEN_KEY, { expiresIn: '10h' })
-// }
-
 module.exports = mongoose.model('user',userSchema)
