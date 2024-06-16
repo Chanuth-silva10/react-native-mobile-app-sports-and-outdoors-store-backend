@@ -7,7 +7,7 @@ This project serves as the backend for a mobile application focused on sports an
 - **User Authentication**: Secure registration and login functionality.
 - **Product Management**: CRUD operations for managing products.
 - **Order Processing**: Handle customer orders efficiently.
-- **Deliver Processing and track order**: Handle customer orders efficiently.
+- **Deliver Processing and track order**: process customer orders efficiently when deliver.
 - **Database Integration**: Utilizes MongoDB for data storage.
 
 ## Getting Started
