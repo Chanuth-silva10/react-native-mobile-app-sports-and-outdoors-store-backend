@@ -46,6 +46,8 @@ npm start
 ```
 The server will run on `http://localhost:5000`.
 
+My deploy link will run `https://sport-outdoor.onrender.com`.
+
 ## Some API Endpoints for get idea
 #### User Routes
 POST /api/users/register - Register a new user
