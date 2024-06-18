@@ -51,14 +51,18 @@ My deploy link will run `https://sport-outdoor.onrender.com`.
 
 ## Some API Endpoints for get idea
 #### User Routes
+```bash
 POST /api/users/register - Register a new user
 POST /api/users/login - User login
+```
 
 #### Product Routes
+```bash
 GET /api/products - Get all products
 POST /api/products - Add a new product
 PUT /api/products/:id - Update a product
 DELETE /api/products/:id - Delete a product
+```
 
 #### Order Routes
 POST /api/orders - Create a new order
